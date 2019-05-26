@@ -11,23 +11,25 @@ You need [Composer](https://getcomposer.org/download/) and [Yarn](https://yarnpk
 ### Installing
 
 * Clone the project `git clone https://github.com/Amandine1345/201901-matchmaking-application.git`
-* Open the folder, rename *.env* to *.env.local* and configure the constants
+* Open the folder, configure the constants in *.env* file 
 ```
-APP_ENV=prod
+APP_ENV=dev
 APP_SECRET=your-secret-message
 DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 MAILER_URL=null://localhost
 ```
 * Run commands
 ```
-composer install --no-dev
+composer install
 yarn install
-yarn encore prod
+yarn encore dev
 php bin/console doctrine:database:create
 php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixtures:load
 ```
 * Create an user admin
 `php bin/console app:create-user <email> <password> <society>`
+* Run server `php bin/console server:run`
 
 ### Build With
 * HTML 5
